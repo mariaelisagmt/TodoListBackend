@@ -6,18 +6,18 @@
       "description": "Uma simples Todo API"
     },
     "paths": {
-      "/tasks": {
+      "/tarefas": {
         "get": {
-          "summary": "List all tasks",
+          "summary": "Lista todas as tarefas",
           "responses": {
             "200": {
-              "description": "A list of tasks",
+              "description": "Lista todas as tarefas",
               "content": {
                 "application/json": {
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Task"
+                      "$ref": "#/components/schemas/Tarefa"
                     }
                   }
                 }
@@ -26,24 +26,24 @@
           }
         },
         "post": {
-          "summary": "Create a new task",
+          "summary": "Criar nova tarefa",
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskInput"
+                  "$ref": "#/components/schemas/TarefaInput"
                 }
               }
             }
           },
           "responses": {
             "201": {
-              "description": "Task created",
+              "description": "Tarefa criada",
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/Task"
+                    "$ref": "#/components/schemas/Tarefa"
                   }
                 }
               }
@@ -51,9 +51,9 @@
           }
         }
       },
-      "/tasks/{id}": {
+      "/tarefas/{id}": {
         "put": {
-          "summary": "Update a task",
+          "summary": "Atualizar tarefa",
           "parameters": [
             {
               "name": "id",
@@ -69,18 +69,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskInput"
+                  "$ref": "#/components/schemas/TarefaInput"
                 }
               }
             }
           },
           "responses": {
             "200": {
-              "description": "Task updated",
+              "description": "Tarefa atualizada",
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/Task"
+                    "$ref": "#/components/schemas/Tarefas"
                   }
                 }
               }
@@ -88,7 +88,7 @@
           }
         },
         "delete": {
-          "summary": "Delete a task",
+          "summary": "Deletar tarefa",
           "parameters": [
             {
               "name": "id",
@@ -101,7 +101,7 @@
           ],
           "responses": {
             "204": {
-              "description": "Task deleted"
+              "description": "Tarefa deletada"
             }
           }
         }
@@ -109,27 +109,27 @@
     },
     "components": {
       "schemas": {
-        "Task": {
+        "Tarefa": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer"
             },
-            "title": {
+            "titulo": {
               "type": "string"
             },
-            "completed": {
+            "completo": {
               "type": "boolean"
             }
           }
         },
-        "TaskInput": {
+        "TarefaInput": {
           "type": "object",
           "properties": {
-            "title": {
+            "titulo": {
               "type": "string"
             },
-            "completed": {
+            "completo": {
               "type": "boolean"
             }
           }

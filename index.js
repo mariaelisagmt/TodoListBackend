@@ -12,11 +12,11 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Armazena as tarefas em memória (in-memory storage)
-let tasks = [];
+let tarefas = [];
 
 // Rota para listar todas as tarefas
 app.get('/tarefas', (req, res) => {
-  res.json(tasks);
+  res.json(tarefas);
 });
 
 // Rota para criar uma nova tarefa
@@ -27,7 +27,7 @@ app.post('/tarefas', (req, res) => {
   }
 
   const novaTarefa = { id: tarefas.length + 1, titulo, completo: false };
-  tasks.push(novaTarefa);
+  tarefas.push(novaTarefa);
   res.status(201).json(novaTarefa);
 });
 
@@ -36,12 +36,12 @@ app.put('/tarefas/:id', (req, res) => {
   const { id } = req.params;
   const { titulo, completo } = req.body;
 
-  const tarefa = tarefa.find(tarefas => tarefas.id === parseInt(id));
+  const tarefa = tarefas.find(tarefa => tarefa.id === parseInt(id));
   if (!tarefa) {
     return res.status(404).json({ error: 'Tarefa não encontrada' });
   }
 
-  if (titulo) completo.titulo = titulo;
+  if (titulo) tarefa.titulo = titulo;
   if (typeof completo === 'boolean') tarefa.completo = completo;
 
   res.json(tarefa);

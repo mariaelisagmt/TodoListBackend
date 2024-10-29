@@ -1,9 +1,13 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json'); // Importamos a documentação Swagger
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
+
+//Definição do cors
+app.use(cors());
 
 // Middleware para interpretar JSON
 app.use(express.json());

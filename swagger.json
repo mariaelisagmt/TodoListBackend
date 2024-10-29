@@ -80,7 +80,7 @@
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/Tarefas"
+                    "$ref": "#/components/schemas/Tarefa"
                   }
                 }
               }
